@@ -1,0 +1,15 @@
+.form {
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 8%;
+}
+
+#dateLabel {
+  margin-bottom: 2%;
+  font-size: 0.8cm;
+}
+#date {
+  margin-bottom: 3%;
+}
