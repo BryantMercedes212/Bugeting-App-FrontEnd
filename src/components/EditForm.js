@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import "./EditForm.css";
 
 const EditForm = () => {
@@ -15,7 +15,14 @@ const EditForm = () => {
   });
 
   const handleTextChange = (event) => {
-    setTransaction({ ...transaction, [event.target.id]: event.target.value });
+    if (event.target.id === "amount") {
+      setTransaction({
+        ...transaction,
+        [event.target.id]: Number(event.target.value),
+      });
+    } else {
+      setTransaction({ ...transaction, [event.target.id]: event.target.value });
+    }
   };
 
   useEffect(() => {
@@ -51,7 +58,9 @@ const EditForm = () => {
         required
       />
       <br></br>
-      <label htmlFor="source">Source:</label>
+      <label htmlFor="source" id="sourceLabel">
+        Source:
+      </label>
       <textarea
         id="source"
         value={source}
@@ -61,7 +70,9 @@ const EditForm = () => {
         required
       />
 
-      <label htmlFor="form">Form:</label>
+      <label htmlFor="form" id="formLabel">
+        Form:
+      </label>
       <textarea
         id="form"
         value={form}
@@ -69,7 +80,9 @@ const EditForm = () => {
         placeholder="Describe your day today"
       />
 
-      <label htmlFor="amount">Amount</label>
+      <label htmlFor="amount" id="amountLabel">
+        Amount
+      </label>
       <input
         id="amount"
         type="number"
@@ -78,7 +91,12 @@ const EditForm = () => {
         onChange={handleTextChange}
       />
       <br />
-      <input type="submit" />
+      <div>
+        <Link to="/transactions">
+          <button>Back</button>
+        </Link>
+        <input type="submit" />
+      </div>
     </form>
   );
 };

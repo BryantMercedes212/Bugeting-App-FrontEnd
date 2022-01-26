@@ -30,3 +30,15 @@ nav {
   text-shadow: 2px 2px rgb(47, 104, 211);
   text-decoration: underline;
 }
+
+#new {
+  margin-right: 1cm;
+}
+
+#sum {
+  border: 0.8mm black groove;
+  padding: 0.25cm;
+  border-radius: 50%;
+  width: 5%;
+  color: black;
+}

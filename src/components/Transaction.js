@@ -15,10 +15,6 @@ const Transaction = () => {
     form: "",
   });
 
-  const handleTextChange = (event) => {
-    setTransaction({ ...transaction, [event.target.id]: event.target.value });
-  };
-
   useEffect(() => {
     axios.get(`${URL}/transactions/${index}`).then((response) => {
       setTransaction({
@@ -29,13 +25,6 @@ const Transaction = () => {
       });
     });
   }, []);
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    axios
-      .put(`${URL}/transactions/${index}`, transaction)
-      .then(() => navigate(`/transactions/`));
-  };
 
   const { date, source, post, form } = transaction;
   return (

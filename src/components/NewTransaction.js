@@ -13,7 +13,14 @@ const NewTransaction = () => {
   });
 
   const handleTextChange = (event) => {
-    setTransaction({ ...transaction, [event.target.id]: event.target.value });
+    if (event.target.id === "amount") {
+      setTransaction({
+        ...transaction,
+        [event.target.id]: Number(event.target.value),
+      });
+    } else {
+      setTransaction({ ...transaction, [event.target.id]: event.target.value });
+    }
   };
 
   const handleSubmit = (event) => {
